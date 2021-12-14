@@ -1,0 +1,1 @@
+# 42--HIVE--get-next-line
