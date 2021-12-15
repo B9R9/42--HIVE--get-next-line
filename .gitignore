@@ -1,8 +1,8 @@
 #DS_Store
-.DS_Store
+*.DS_Store
 
 #Executable
-./test_gnl
+test_gnl
 
 # Prerequisites
 *.d
