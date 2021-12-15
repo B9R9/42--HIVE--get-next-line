@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 09:33:18 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/15 14:03:59 by briffard         ###   ########.fr       */
+/*   Created: 2021/11/12 13:21:59 by briffard          #+#    #+#             */
+/*   Updated: 2021/11/29 13:21:22 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../get_next_line.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strnequ(char const	*s1, char const	*s2, size_t	n)
 {
-	char	*line;
-	int		fd;
-
-	line = NULL;
-
-	fd = 0;
-	if (argc == 1)
-	{
-		while(get_next_line(0, &line) > 0)
-		{
-			ft_putstrcolor(line,"yellow");
-			ft_putchar('\n');
-		}
-	}
+	if (!s1 || !s2)
+		return (0);
+	if (ft_strncmp(s1, s2, n) == 0)
+		return (1);
 	else
-	{
-			fd = open(argv[1], O_RDONLY);
-			while((get_next_line(fd, &line) > 0))
-				{	
-					ft_putstrcolor(line,"yellow");
-					ft_putchar('\n');
-				}
-		}
-	free(line);
+		return (0);
 }

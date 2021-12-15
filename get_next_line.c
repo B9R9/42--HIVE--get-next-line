@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:34:00 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/14 15:43:28 by briffard         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:57:51 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,45 @@ int	get_next_line(const int fd, char **line)
 {
 	static char	*str;
 	char		buffer[BUFF_SIZE + 1];
+	char		*temp = NULL;
 	int			ret;
+		;
 	int			i;
 
 	i = 0;
+
 	//sleep(1);
 	/*CHECK LES ERREURS*/
-	if(fd == -1 || !line)
+	if(fd < 0 || !line)
 		return (-1);
-	/*faire le malloc que si str ne contient rien*/
+	if (BUFF_SIZE == 0)
+	{
+		*line = NULL;
+		return(-1);
+	}
+/****************************************************************************	
+	while(get_index_line(buffer[fd]) == -1)
+	{
+
+		ft_bzero(buffer[fd], BUFF_SIZE + 1);
+		ret =(fd, buffer[fd], BUFF_SIZE);
+	}
+*******************************************************************************/
 	if (!str)
 	{
-		str = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1 ));
-		if (!str)
+		ret = 1;
+		str = (char *)malloc(sizeof(char)* BUFF_SIZE + 1);
+		/*COPIE BUFFER DANS STR*/
+		while(ret > 0)
 			{
-				ft_putstrcolor("ERREUR MALLOC STR\n", "red");
-				return(-1);
+				ret = read(fd, &buffer, BUFF_SIZE);
+				buffer[ret] = '\0';
+				temp = ft_strjoin(str, buffer);
+				free(str);
+				str = temp;
 			}
 	}
-	/*COPIE BUFFER DANS STR*/
-	while((ret = read(fd,&buffer,BUFF_SIZE)) > 0)
-		{
-			buffer[ret] = '\0';
-			str = ft_strjoin(str, buffer);
-		}
-	//free(buffer);
+	//DO I have to clear the buffer ??
 	/*LOOK FOR THE LINE*/
 	if(str[i])
 	{
@@ -51,13 +65,13 @@ int	get_next_line(const int fd, char **line)
 			*line = ft_strdup("");
 		else
 			*line = ft_strsub(str, 0, i);
+		ft_bzero(str, i);
 		str = &str[i + 1];
 		return(1);
 	}
 	else
 		*line = ft_strdup("");
-	//printf("%p\n", str);
-	//ft_strdel(&str);
-	//system("leaks ./test_gnl");
+	//ft_strdel(&str);// Created a free pointer problem
+	//free(line); This created a Free pointer problem
 	return(0);
 }

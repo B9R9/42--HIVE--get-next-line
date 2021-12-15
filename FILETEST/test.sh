@@ -1,12 +1,9 @@
 #!/bin/bash
-rm -f test_gnl test_gnl_stdout
-
-gcc -Wall -Wextra -Werror -I libft/includes -o ../get_next_line.o -c ../get_next_line.c
-gcc -Wall -Wextra -Werror -I libft/includes -o main.o -c main.c
-gcc -o test_gnl main.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
-
-#gcc -Wall -Wextra -Werror -I libft/includes -o mainstdout.o -c mainstdout.c
-#gcc -o test_gnl_stdout mainstdout.o ../get_next_line.o -I ../libft/includes -L ../Libft/ -lft
+rm -f ../get_next_line.o main.o
+rm -f test_gnl
+gcc -g -Wall -Wextra -Werror -I libft/includes -o ../get_next_line.o -c ../get_next_line.c
+gcc -g -Wall -Wextra -Werror -I libft/includes -o main.o -c main.c
+gcc -g -o test_gnl main.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 echo "*----------------------*"
 echo "*----- BASIC TEST -----*"

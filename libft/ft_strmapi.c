@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 09:33:18 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/15 14:03:59 by briffard         ###   ########.fr       */
+/*   Created: 2021/11/24 16:18:21 by briffard          #+#    #+#             */
+/*   Updated: 2021/11/29 13:18:32 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../get_next_line.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*line;
-	int		fd;
+	unsigned int	i;
+	char			*rtn;
 
-	line = NULL;
-
-	fd = 0;
-	if (argc == 1)
+	i = 0;
+	if (!s || (!s && !f))
+		return (ft_strdup(""));
+	else if (!f)
+		return (ft_strdup(s));
+	rtn = ft_strdup(s);
+	if (!rtn)
+		return (rtn = NULL);
+	while (s[i])
 	{
-		while(get_next_line(0, &line) > 0)
-		{
-			ft_putstrcolor(line,"yellow");
-			ft_putchar('\n');
-		}
+		rtn[i] = (*f)(i, s[i]);
+		i++;
 	}
-	else
-	{
-			fd = open(argv[1], O_RDONLY);
-			while((get_next_line(fd, &line) > 0))
-				{	
-					ft_putstrcolor(line,"yellow");
-					ft_putchar('\n');
-				}
-		}
-	free(line);
+	return (rtn);
 }
