@@ -106,8 +106,16 @@ echo "*----------------------*"
 echo "empty line:"
 ./test_gnl advancedtestemptyline.txt
 
+echo "*----------------------*"
 echo "4, 8 and 16 Charactere without \\n"
 ./test_gnl advancedtest4cnoNL.txt
 ./test_gnl advancedtest8cnoNL.txt
 ./test_gnl advancedtest16cnoNL.txt
 
+echo "*------------------------*"
+echo "BIG FAT LINE"
+./test_gnl Bigfatline.txt
+
+echo "*-------------------------*"
+echo "MUTIPLE FILE DESCRIPTOR"
+./test_gnl fd1.txt fd2.txt fd3.txt fd4.txt fd5.txt

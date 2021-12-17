@@ -1,0 +1,3 @@
+This is fd2
+and now this fd2
+fd2 drop

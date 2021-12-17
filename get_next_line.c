@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:34:00 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/16 19:59:39 by briffard         ###   ########.fr       */
+/*   Updated: 2021/12/17 15:50:22 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 int	get_next_line(const int fd, char **line)
 {
-	static char	*str[FD_SIZE]; //Pensez a modifier le fichier h
+	static char	*str[FD_SIZE];
 	char		buffer[BUFF_SIZE + 1];
 	char		*temp;
 	int			ret;
 	int			i;
 
 	i = 0;
+	temp = NULL;
 	/*CHECK LES ERREURS*/
 	if(fd < 0 || !line || read(fd, buffer,0) < 0)
 		return (-1);
@@ -31,19 +32,20 @@ int	get_next_line(const int fd, char **line)
 		return (-1);
 	}
 	if (!str[fd])
+	{	
 		str[fd] = ft_strnew(0);
 	/*COPIE BUFFER DANS STR*/
-	ret = 1;
-	while(ret > 0)
-	{
+		ret = 1;
+		while(ret > 0)
+		{	
 			ret = read(fd,&buffer,BUFF_SIZE);
 			buffer[ret] = '\0';
 			temp = ft_strjoin(str[fd], buffer);
-			//free(str[fd]);
-			ft_bzero(buffer, ft_strlen(buffer));
+			free(str[fd]);
 			str[fd] = temp;
-	}
-	//free(temp);
+		}
+}
+	//free(temp);// Change the return
 	/*LOOK FOR THE LINE*/
 	if(str[fd][i])
 	{
@@ -53,7 +55,7 @@ int	get_next_line(const int fd, char **line)
 			*line = ft_strdup("");
 		else
 			*line = ft_strsub(str[fd], 0, i);
-		str[fd] = &str[fd][i + 1];
+		str[fd] = &(str[fd][i + 1]);
 		return(1);
 	}
 	return(0);
