@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:33:18 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/17 15:50:11 by briffard         ###   ########.fr       */
+/*   Updated: 2021/12/20 09:43:13 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	main(int argc, char **argv)
 				}
 			j++;
 			}
+		j = 0;
+		while(j < 6)
+			close(mfd[j++]);
 	}
 	else
 	{
@@ -64,9 +67,8 @@ int	main(int argc, char **argv)
 					ft_putchar('\n');
 					free(line);
 				}
+			close(fd);
 		}
-	close(fd);
-
 	//free(line);
 	//system("leaks test_gnl");
 }
