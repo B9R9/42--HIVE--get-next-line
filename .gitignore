@@ -1,4 +1,6 @@
 .DS_Store
-.o
-.swp
+*.o
+*.a
+*.out
+*.swp
 test_gnl
