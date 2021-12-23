@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:33:18 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/20 09:43:13 by briffard         ###   ########.fr       */
+/*   Updated: 2021/12/21 10:28:28 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 int	main(int argc, char **argv)
 {
 	char	*line;
+	char	*color[] = {"green", "yellow"};
 	int		fd;
 	int		i = 0;
 	int		j = 0;
+	int		c = 0;
 
 	line = NULL;
 
@@ -32,27 +34,30 @@ int	main(int argc, char **argv)
 			free(line);
 		}
 	}
-	else if (argc > 1)
+	else if (argc == 6)
 	{
 		/*MULTIPLE FD TEST*/
-		int mfd[5] = {0, 0, 0,0, 0};
+		int mfd[5] = {0, 0, 0, 0, 0};
 
 		mfd[0] = open(argv[1], O_RDONLY);
 		mfd[1] = open(argv[2], O_RDONLY);
 		mfd[2] = open(argv[3], O_RDONLY);
 		mfd[3] = open(argv[4], O_RDONLY);
 		mfd[4] = open(argv[5], O_RDONLY);
-
-		while(j < 6)
+        
+        while(j < 6)
 			{
 				i = 0;
-				while((get_next_line(mfd[i], &line) > 0))
-				{
-					ft_putstrcolor(line, "yellow");
-					ft_putchar('\n');
-					i++;
-				}
-			j++;
+				while( i < 5)
+                {
+                    if(get_next_line(mfd[i], &line) > 0)
+                    {if (c == 2)
+						c = 0;
+                        ft_putstrcolor(line,color[c++]);
+                        ft_putchar('\n');}
+                    i++;
+                }
+                j++;
 			}
 		j = 0;
 		while(j < 6)
@@ -63,9 +68,12 @@ int	main(int argc, char **argv)
 			fd = open(argv[1], O_RDONLY);
 			while((get_next_line(fd, &line) > 0))
 				{	
-					ft_putstrcolor(line,"yellow");
+					if (c == 2)
+						c = 0;
+					ft_putstrcolor(line,color[c]);
 					ft_putchar('\n');
 					free(line);
+					c++;
 				}
 			close(fd);
 		}

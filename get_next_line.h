@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:35:24 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/17 15:47:36 by briffard         ###   ########.fr       */
+/*   Updated: 2021/12/22 11:57:15 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 # define GET_NEXT_LINE_H
 
 /*DEFINE*/
-#define BUFF_SIZE 20
-#define FD_SIZE 256
+# define BUFF_SIZE 4
+# define FD_SIZE 256
 
 /*INCLUDES*/
-#include"./libft/libft.h"
+# include"./libft/libft.h"
 
 /*PROTOTYPES*/
 int	get_next_line(const int fd, char **line);
 
-# endif
+#endif
