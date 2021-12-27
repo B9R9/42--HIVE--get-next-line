@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:52:18 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/23 09:19:52 by briffard         ###   ########.fr       */
+/*   Updated: 2021/12/23 14:39:27 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	get_next_line(const int fd, char **line)
 	char		*temp;
 	int			ret;
 
-	temp = NULL;
 	if (fd < 0 || !line || BUFF_SIZE <= 0)
 		return (-1);
 	ret = read(fd, buffer, BUFF_SIZE);
@@ -71,12 +70,13 @@ int	get_next_line(const int fd, char **line)
 	{
 		buffer[ret] = '\0';
 		if (!str[fd])
-			str[fd] = ft_strnew(BUFF_SIZE);
-		temp = ft_strjoin(str[fd], buffer);
-		if (!temp)
-			return (-1);
-		free(str[fd]);
-		str[fd] = temp;
+			str[fd] = ft_strdup(buffer);
+		else
+		{
+			temp = ft_strjoin(str[fd], buffer);
+			free(str[fd]);
+			str[fd] = temp;
+		}
 		if (ft_strchr(str[fd], '\n'))
 			break ;
 		ret = read(fd, buffer, BUFF_SIZE);
