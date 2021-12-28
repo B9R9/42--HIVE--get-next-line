@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:52:18 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/23 14:39:27 by briffard         ###   ########.fr       */
+/*   Updated: 2021/12/28 16:56:03 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static int	ft_print_line(char **str, char **line)
 	if ((*str)[i] == '\n')
 	{
 		*line = ft_strsub(*str, 0, i);
-		temp = ft_strdup(&(*str)[i + 1]);
+		temp = ft_strdup(&((*str)[i + 1]));
 		if (!line || !temp)
 			return (-1);
-		free(*str);
+		ft_memdel((void **)(&(*str)));
 		*str = temp;
 		if ((*str)[0] == '\0')
 			ft_strdel(str);
@@ -56,30 +56,67 @@ static int	ft_check_return(char **str, char **line, int ret, int fd)
 	return (ft_print_line(&str[fd], line));
 }
 
+static char *add_buffer_to(char **str, char *buffer)
+{
+    char    *temp;
+
+    temp = ft_strjoin(*str, buffer);
+    if (!temp)
+        return (NULL);
+    ft_memdel((void **)(&(*str)));
+    *str = temp;
+    return (*str);
+}
+
+static int error_check(int fd, char **line)
+{
+    if (fd < 0 || !line || BUFF_SIZE <= 0 || fd > FD_SIZE)
+        return (-1);
+/*    if(!(*str))
+    {
+        *str = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
+        if (!(*str))
+            return(-1);
+    }*/
+    return (0);
+}
+
 int	get_next_line(const int fd, char **line)
 {
 	static char	*str[FD_SIZE];
 	char		buffer[BUFF_SIZE + 1];
-	char		*temp;
+/*	char		*temp;*/
 	int			ret;
 
-	if (fd < 0 || !line || BUFF_SIZE <= 0)
+	if (error_check(fd, line))
 		return (-1);
-	ret = read(fd, buffer, BUFF_SIZE);
-	while (ret > 0)
-	{
-		buffer[ret] = '\0';
-		if (!str[fd])
-			str[fd] = ft_strdup(buffer);
-		else
-		{
-			temp = ft_strjoin(str[fd], buffer);
-			free(str[fd]);
-			str[fd] = temp;
-		}
-		if (ft_strchr(str[fd], '\n'))
-			break ;
-		ret = read(fd, buffer, BUFF_SIZE);
-	}
+    if (str[fd] && ft_strchr(str[fd], '\n'))
+        return (ft_print_line(&str[fd], line));
+    else
+    {
+	    ret = read(fd, buffer, BUFF_SIZE);
+	    while (ret > 0)
+	    {
+		    buffer[ret] = '\0';
+		    if (!str[fd])
+            {
+			    str[fd] = ft_strdup(buffer);
+                if (!str[fd])
+                    return (-1);
+            }
+		    else
+                str[fd] = add_buffer_to(&str[fd], buffer);
+                /*
+			    temp = ft_strjoin(str[fd], buffer);
+                if (!temp)
+                    return (-1);
+			    ft_memdel((void **)&str);
+			    str[fd] = temp;
+                */
+		    if (ft_strchr(str[fd], '\n'))
+			    break ;
+		    ret = read(fd, buffer, BUFF_SIZE);
+	    }
+    }
 	return (ft_check_return(str, line, ret, fd));
 }
