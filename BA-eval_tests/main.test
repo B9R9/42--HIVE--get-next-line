@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:33:18 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/21 10:28:28 by briffard         ###   ########.fr       */
+/*   Updated: 2021/12/29 00:15:02 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	main(int argc, char **argv)
 {
 	char	*line;
 	char	*color[] = {"green", "yellow"};
-	int		fd;
-	int		i = 0;
-	int		j = 0;
+	int     fd;
+	int     i = 0;
+	int     j = 0;
 	int		c = 0;
 
 	line = NULL;

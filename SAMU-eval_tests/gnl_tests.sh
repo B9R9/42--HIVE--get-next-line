@@ -33,10 +33,10 @@ printf "\n\n"
 
 TESTMAIN="tests_basic_main"
 
-cc -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-cc -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-cc -o tests_basic $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_basic $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_basic
 
@@ -53,10 +53,10 @@ printf "\n\n"
 
 TESTMAIN="tests_middle_main"
 
-cc -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-cc -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-cc -o tests_middle $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_middle $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_middle
 
@@ -73,10 +73,10 @@ printf "\n\n"
 
 TESTMAIN="tests_advanced_main"
 
-cc -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-cc -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-cc -o tests_advanced $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_advanced $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_advanced
 
@@ -93,10 +93,10 @@ printf "\n\n"
 
 TESTMAIN="tests_errors_main"
 
-cc -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-cc -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-cc -o tests_error $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_error $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_error
 
@@ -114,10 +114,10 @@ printf "\n\n"
 
 TESTMAIN="tests_basic_main"
 
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-gcc -o tests_buff $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_buff $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_buff
 
@@ -131,10 +131,10 @@ printf "\n\n"
 
 TESTMAIN="tests_basic_main"
 
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-gcc -o tests_buff $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_buff $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_buff
 
@@ -148,10 +148,10 @@ printf "\n\n"
 
 TESTMAIN="tests_basic_main"
 
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-gcc -o tests_buff $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_buff $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_buff
 
@@ -165,10 +165,10 @@ printf "\n\n"
 
 TESTMAIN="tests_basic_main"
 
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-gcc -o tests_buff $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_buff $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_buff
 
@@ -186,10 +186,10 @@ printf "\n\n"
 
 TESTMAIN="tests_multifd_main"
 
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-gcc -o tests_multifd $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_multifd $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_multifd
 
@@ -207,10 +207,10 @@ printf "\n\n"
 
 TESTMAIN="tests_custom_main"
 
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-gcc -o tests_custom $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_custom $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_custom $2 $3
 
@@ -228,10 +228,10 @@ printf "\n\n"
 
 TESTMAIN="tests_bible_main"
 
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
-gcc -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
+clang -Wall -Wextra -Werror -g -I ../libft/includes -DBUFF_SIZE=$BUFF_SIZE -o ../get_next_line.o -c ../get_next_line.c
+clang -Wall -Wextra -Werror -g -I ../libft/includes -o $TESTMAIN.o -c -x c $TESTMAIN.test
 
-gcc -o tests_bible $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
+clang -o tests_bible $TESTMAIN.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
 ./tests_bible
 

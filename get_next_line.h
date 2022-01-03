@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:35:24 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/28 15:55:04 by briffard         ###   ########.fr       */
+/*   Updated: 2022/01/03 09:56:47 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define FD_SIZE 256
 
 /*INCLUDES*/
-# include"./libft/includes/libft.h"
+# include"libft.h"
 
 /*PROTOTYPES*/
 int	get_next_line(const int fd, char **line);
