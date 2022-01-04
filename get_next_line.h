@@ -15,7 +15,7 @@
 
 /*DEFINE*/
 # define BUFF_SIZE 4
-# define FD_SIZE 256
+# define FD_SIZE 4096
 
 /*INCLUDES*/
 # include"libft.h"
