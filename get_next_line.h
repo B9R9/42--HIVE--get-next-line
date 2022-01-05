@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:35:24 by briffard          #+#    #+#             */
-/*   Updated: 2022/01/03 10:34:01 by briffard         ###   ########.fr       */
+/*   Updated: 2022/01/05 10:34:18 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 /*DEFINE*/
-# define BUFF_SIZE 4
+//# define BUFF_SIZE 4
 # define FD_SIZE 4096
 
 /*INCLUDES*/

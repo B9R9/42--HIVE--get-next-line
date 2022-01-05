@@ -6,7 +6,7 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:52:18 by briffard          #+#    #+#             */
-/*   Updated: 2022/01/03 10:40:43 by briffard         ###   ########.fr       */
+/*   Updated: 2022/01/05 10:32:58 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static int	ft_print_line(char **str, char **line)
 	else
 	{
 		*line = ft_strdup(*str);
+		if (!line)
+			return (-1);
 		ft_strdel(str);
 	}
 	return (1);
