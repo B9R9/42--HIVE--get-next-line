@@ -25,7 +25,7 @@ if [ $1 = 'all' ]; then
 	exit 1
 fi
 
-if [ $1 = 'basic' ] || [ $1 = 'basic ++' ]; then
+if [ $1 = 'basic' ] || [ $1 = 'basic++' ]; then
 
 printf "${bleu}--------------------------------------------------------------------------------${neutre}\n"
 printf "${bleu}-------------------------------------------------------------------   BASIC TEST${neutre}\n"
@@ -40,9 +40,9 @@ gcc -Wall -Wextra -Werror -g -I ../libft/includes -I ../ -DBUFF_SIZE=$BUFF_SIZE 
 gcc -Wall -Wextra -Werror -g -I ../libft/includes -I ../ -o basics_test.o -c basics.test.c
 gcc -o basic_test basics_test.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 
-if [ $1 = 'basic ++' ]; then
+if [ $1 = 'basic++' ]; then
 	./basic_test 1
-	exit 1
+	exit 1 
 else
 	./basic_test
 	exit 1
