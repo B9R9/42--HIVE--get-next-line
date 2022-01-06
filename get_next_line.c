@@ -6,11 +6,12 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:52:18 by briffard          #+#    #+#             */
-/*   Updated: 2022/01/05 10:32:58 by briffard         ###   ########.fr       */
+/*   Updated: 2022/01/05 22:24:46 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 static int	ft_print_line(char **str, char **line)
 {
@@ -54,6 +55,13 @@ static char	*add_buffer_to(char **str, char *buffer)
 {
 	char	*temp;
 
+	if (!(*str))
+		{
+			*str = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
+			if(!(*str))
+				return (NULL);
+			ft_bzero(*str, BUFF_SIZE);
+		}
 	temp = ft_strjoin(*str, buffer);
 	if (!temp)
 		return (NULL);
@@ -62,17 +70,10 @@ static char	*add_buffer_to(char **str, char *buffer)
 	return (*str);
 }
 
-static int	error_check(int fd, char **str, char **line)
+static int	error_check(int fd, char **line)
 {
 	if (fd < 0 || !line || BUFF_SIZE <= 0 || fd > FD_SIZE)
 		return (-1);
-	if (!(*str))
-	{
-		*str = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
-		if (!(*str))
-			return (-1);
-		ft_bzero(*str, BUFF_SIZE);
-	}
 	return (0);
 }
 
@@ -82,7 +83,7 @@ int	get_next_line(const int fd, char **line)
 	char		buffer[BUFF_SIZE + 1];
 	int			ret;
 
-	if (error_check(fd, &str[fd], line) == -1)
+	if (error_check(fd, line) == -1)
 		return (-1);
 	if (str[fd] && ft_strchr(str[fd], '\n'))
 		return (ft_print_line(&str[fd], line));
@@ -90,7 +91,7 @@ int	get_next_line(const int fd, char **line)
 	{
 		ret = read(fd, buffer, BUFF_SIZE);
 		if (ret == 0)
-			return (0);
+			return (ft_check_return(str,line,ret,fd));
 		while (ret > 0)
 		{
 			buffer[ret] = '\0';

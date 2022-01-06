@@ -2,8 +2,8 @@
 rm -f ../get_next_line.o main.o
 rm -f test_gnl
 make -C ../libft/ fclean && make -C ../libft/
-gcc -g -Wall -Wextra -Werror -I ../libft/includes -o ../get_next_line.o -c ../get_next_line.c
-gcc -g -Wall -Wextra -Werror -I ../libft/includes -o main.o -c main.c
+gcc -g -Wall -Wextra -Werror -I ../libft/includes -I ../ -o ../get_next_line.o -c ../get_next_line.c
+gcc -g -Wall -Wextra -Werror -I ../libft/includes -I ../ -o main.o -c main.c
 gcc -g -o test_gnl main.o ../get_next_line.o -I ../libft/includes -L ../libft/ -lft
 rm -f ../get_next_line.o
 
@@ -121,3 +121,13 @@ echo "BIG FAT LINE"
 echo "*-------------------------*"
 echo "MUTIPLE FILE DESCRIPTOR"
 ./test_gnl fd1.txt fd2.txt fd3.txt fd4.txt fd5.txt
+
+echo "*-------------------------*"
+echo "Specific_case"
+./test_gnl specific_case.txt
+
+echo "NANO FILE"
+./test_gnl nano_file.txt
+
+echo "TEST NOEOL"
+./test_gnl noeolfile.txt

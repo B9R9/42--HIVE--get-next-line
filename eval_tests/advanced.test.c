@@ -6,12 +6,12 @@
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:33:18 by briffard          #+#    #+#             */
-/*   Updated: 2021/12/29 00:15:02 by briffard         ###   ########.fr       */
+/*   Updated: 2022/01/05 17:58:08 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "../get_next_line.h"
+#include "get_next_line.h"
 
 int	main(int argc, char **argv)
 {

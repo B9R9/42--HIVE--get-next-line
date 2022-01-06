@@ -29,7 +29,7 @@ int	get_next_line(const int fd, char **line);
 #endif
 
 int	main(void)
-{
+
 	char 	*line;
 	int		out;
 	int		pipe_ends[2];
