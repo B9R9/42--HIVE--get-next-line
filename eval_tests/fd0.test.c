@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fd0.test.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: briffard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:33:18 by briffard          #+#    #+#             */
-/*   Updated: 2022/01/05 17:58:08 by briffard         ###   ########.fr       */
+/*   Updated: 2022/01/13 22:09:15 by briffard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,67 +16,158 @@
 int	main(int argc, char **argv)
 {
 	char	*line;
-	char	*color[] = {"green", "yellow"};
-	int     fd;
-	int     i = 0;
-	int     j = 0;
-	int		c = 0;
-
+	char	*saveline[] = {"0", "0", "0", "0", "0", "0", "0", "0"};
 	line = NULL;
-
-	fd = 0;
 	if (argc == 1)
+		(void)(argv);
+	if (ft_atoi(argv[1]) == 1)
 	{
+		get_next_line(0, &line);
+		if (ft_atoi(argv[2]) == 8)
+		{
+			ft_putstr("Print 1 line of 8 characters from stdout: ");
+			if(!ft_strcmp(line, "abcedefi"))
+				ft_putstrcolor("OK\n", "green");
+		}
+
+		else if (ft_atoi(argv[2]) == 16)
+		{
+			ft_putstr("Print 1 line of 16 characters from stdout: ");
+			if (!ft_strcmp(line, "qazwsxedcrfvtgby"))
+					ft_putstrcolor("OK\n", "green");
+		}
+		else if (ft_atoi(argv[2]) == 4)
+		{
+			ft_putstr("Print a line of 4 characters from stdout: ");
+			if (!ft_strcmp(line, "asdf"))
+				ft_putstrcolor("OK\n","green");
+		}
+		else
+			ft_putstrcolor("KO\n", "red");
+		if (argc == 4)
+		{
+			ft_putstrcolor("\n======================================================= DETAILS\n", "cyan");
+			if (ft_atoi(argv[2]) == 8)
+				ft_putstr("RETURN EXPECTED   : abcedefi\n");
+			else if (ft_atoi(argv[2]) == 16)
+				ft_putstr("RETURN EXPEXTED   : qazwsxedcrfvtgby\n");
+			else if (ft_atoi(argv[2]) == 4)
+				ft_putstr("RETURN EXPECTED   : asdf\n");
+			printf("RETURN OF GNL     : %s\n", line);
+			ft_putstrcolor("===============================================================\n","cyan");
+		}
+	}
+	else if (ft_atoi(argv[1]) == 2)
+	{
+		get_next_line(0, &line);
+		if (ft_atoi(argv[2]) == 8)
+		{
+			ft_putstr("Print 2 lines of 8 characters: ");
+			if (!ft_strcmp(line,"qwertyui"))
+				ft_putstrcolor("Line 1 OK ", "green");
+		}
+		else if (ft_atoi(argv[2]) == 16)
+		{
+			ft_putstr("Print 2 lines of 16 characters from stdout: ");
+			if (!ft_strcmp(line, "qazwsxedcrfvtgby"))
+				ft_putstrcolor("Line 1 OK","green");
+		}
+		else if (ft_atoi(argv[2]) == 4)
+		{
+			ft_putstr("Print 2 lines of 4 characters: ");
+			if (!ft_strcmp(line, "qwer"))
+				ft_putstrcolor("Line 1 OK", "green");
+		}
+		else
+			ft_putstrcolor("Line 1 KO ", "red");
+		if (argc == 4)
+		 	saveline[0] = ft_strdup(line);
+		get_next_line(0, &line);
+		if (ft_atoi(argv[2]) == 8)
+		{
+			if (!ft_strcmp(line,"asdfghjk"))
+				ft_putstrcolor("Line 2 OK\n", "green");
+		}
+		else if (ft_atoi(argv[2]) == 16)
+		{
+			if (!ft_strcmp(line, "qwertyuiopasdfgh"))
+				ft_putstrcolor("Line 2 OK\n","green");
+		}
+		else if (ft_atoi(argv[2]) == 4)
+		{
+			if (!ft_strcmp(line, "asdf"))
+				ft_putstrcolor("Line 2 OK\n", "green");
+		}
+		else
+			ft_putstrcolor("Line 2 KO\n", "red");
+		if (argc == 4)
+		{
+			saveline[1] = ft_strdup(line);
+			ft_putstrcolor("======================================================= DETAILS\n", "cyan");
+			ft_putstr("RETURN EXPECTED   : LINE 1 -> qwertyui\n");
+			ft_putstr("                    LINE 2 -> asdfghjk\n");
+			printf("RETURN OF GNL     : LINE 1 -> %s\n",saveline[0]);
+			printf("                    LINE 2 -> %s\n",saveline[1]);
+			ft_putstrcolor("===============================================================\n", "cyan");
+		}
+	}
+	else if (ft_atoi(argv[1]) == 3)
+	{
+		int i = 1;
+		char	*basictest8cxl[]= {"0", "qwertyui","asdfghjk", "zxcvbnm,", "qazwsxed", "poiuytre", "lkjhgfds", "mnbvcxzl"};
+		ft_putstr("Print Multiple lines of 8 characters: ");
 		while(get_next_line(0, &line) > 0)
 		{
-			ft_putstrcolor(line,"yellow");
-			ft_putchar('\n');
-			free(line);
-		}
-	}
-	else if (argc == 6)
-	{
-		/*MULTIPLE FD TEST*/
-		int mfd[5] = {0, 0, 0, 0, 0};
-
-		mfd[0] = open(argv[1], O_RDONLY);
-		mfd[1] = open(argv[2], O_RDONLY);
-		mfd[2] = open(argv[3], O_RDONLY);
-		mfd[3] = open(argv[4], O_RDONLY);
-		mfd[4] = open(argv[5], O_RDONLY);
-        
-        while(j < 6)
+			if (!ft_strcmp(line, basictest8cxl[i]))
 			{
-				i = 0;
-				while( i < 5)
-                {
-                    if(get_next_line(mfd[i], &line) > 0)
-                    {if (c == 2)
-						c = 0;
-                        ft_putstrcolor(line,color[c++]);
-                        ft_putchar('\n');}
-                    i++;
-                }
-                j++;
+				ft_putstrcolor("Line ","green");
+				ft_putnbr(i);
+				ft_putstrcolor (" OK ", "green");
+				if (argc == 4)
+					saveline[i] = ft_strdup(line);
+				i++;
 			}
-		j = 0;
-		while(j < 6)
-			close(mfd[j++]);
-	}
-	else
-	{
-			fd = open(argv[1], O_RDONLY);
-			while((get_next_line(fd, &line) > 0))
-				{	
-					if (c == 2)
-						c = 0;
-					ft_putstrcolor(line,color[c]);
-					ft_putchar('\n');
-					free(line);
-					c++;
-				}
-			close(fd);
+			else
+			{
+				ft_putstrcolor("Line ", "red");
+				ft_putnbr(i);
+				ft_putstrcolor(" KO ", "red");
+				if (argc == 3)
+					saveline[i] = ft_strdup(line);
+				i++;
+			}
 		}
-	//free(line);
-	//system("leaks test_gnl");
+		ft_putchar('\n');
+		if (argc == 4)
+		{
+			i = 1;
+			ft_putstrcolor("======================================================= DETAILS\n", "cyan");
+			printf("  RETURN EXPECTED      |         GNL RETURN\n");
+			while (i < 8)
+			{
+				printf("LINE %d -> %s     |     %s <- LINE %d\n", i,basictest8cxl[i], saveline[i], i);
+				i++;
+			}
+			ft_putstrcolor("===============================================================\n", "cyan");
+		}
+	}
+/*
+		fd = open("./TestFiles/advancedtest8cnoNL.txt", O_RDONLY);
+	get_next_line(fd, &line);
+	close(fd);
+	ft_color(NORMAL);
+	ft_putstr("Print 8 characters with no newline at the end: ");
+	if (!ft_strcmp(line, "qwertyui"))
+		ft_putstrcolor("OK\n","green");
+	else
+		ft_putstrcolor("KO\n", "red");
+	if (argc == 2)
+	{
+		ft_putstrcolor("======================================================= DETAILS\n", "cyan");
+		ft_putstr("RETURN EXPECTED   : qwertyui\n");
+		printf("RETURN OF GNL     : %s\n", line);
+		ft_putstrcolor("===============================================================\n","cyan");
+	}
+	close(fd);
+	*/
 }
