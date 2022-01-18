@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static int	ft_print_line(char **str, char **line)
 {
@@ -56,12 +55,12 @@ static char	*add_buffer_to(char **str, char *buffer)
 	char	*temp;
 
 	if (!(*str))
-		{
-			*str = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
-			if(!(*str))
-				return (NULL);
-			ft_bzero(*str, BUFF_SIZE);
-		}
+	{
+		*str = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
+		if (!(*str))
+			return (NULL);
+		ft_bzero(*str, BUFF_SIZE);
+	}
 	temp = ft_strjoin(*str, buffer);
 	if (!temp)
 		return (NULL);
